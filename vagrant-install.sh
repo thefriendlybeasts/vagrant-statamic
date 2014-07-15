@@ -31,7 +31,3 @@ sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 #restart apache
 sudo service apache2 restart
 
-# file permissions set
-find /vagrant -type d -exec chmod 777 {} \;
-find /vagrant -type f -exec chmod 777 {} \;
-

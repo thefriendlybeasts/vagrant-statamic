@@ -15,5 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # run this provisioning script once booted
     config.vm.provision :shell, :path => "vagrant-install.sh"
+    
+# Sync Folder
+config.vm.synced_folder "./", "/vagrant", id: "vagrant-root",
+  owner: "vagrant",
+  group: "www-data",
+  mount_options: ["dmode=775,fmode=664"]
 
 end
