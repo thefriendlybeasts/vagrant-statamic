@@ -15,7 +15,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     :path => "vagrant-install.sh"
 
   # Sync Folder
-  config.vm.synced_folder "./public_html", "/vagrant",
+  # Default to public_html if not otherwise specified.
+  if !ENV['SYNCED_FOLDER']
+    ENV['SYNCED_FOLDER'] = "./public_html"
+  end
+
+  config.vm.synced_folder ENV['SYNCED_FOLDER'], "/vagrant",
     id:            "vagrant-root",
     owner:         "vagrant",
     group:         "www-data",

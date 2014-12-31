@@ -1,20 +1,38 @@
-vagrant-statamic
-================
+# vagrant-statamic
+The Friendly Beasts' Vagrant setup.
 
-A `Vagrant Up` for quick Statamic development.
-
-### Provisions
-
+## Provisions
 - Ubuntu 'Precise32'
 - Apache2
 - PHP5 (latest)
 - Configured php.ini and apache2.conf
 
-### Requirements
-
+## Requirements
 - VirtualBox (latest)
 - Vagrant (latest)
 
-### Notes
+## Usage
+1. Place `vagrant-install.sh` and `Vagrantfile` above your site's root.
+2. `vagrant up` in your project dir.
 
-Uses modified Bash script from [JeffreyWay/Vagrant-Setup](https://github.com/JeffreyWay/Vagrant-Setup)
+By default, this will sync `public_html` to your Vagrant machine. You can change the default by editing this line:
+
+```ruby
+ENV['SYNCED_FOLDER'] = "./public_html"
+```
+
+You can also sync a different folder on a per-case basis. Just define an environment variable before `vagrant up`.
+
+For example, after we run our Grunt build script, we end up with a `dist` dir next to `public_html`. To review the built version of the site before deploying, we run:
+
+```bash
+SYNCED_FOLDER="./dist" vagrant up
+```
+
+
+
+---
+
+
+
+- Thanks to Bradley Flood for the [starting point](https://github.com/bradleyflood/vagrant-statamic).
