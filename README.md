@@ -2,17 +2,17 @@
 The Friendly Beasts' Vagrant setup.
 
 ## Provisions
-- Ubuntu 'Precise32'
+- ubuntu/trusty64
 - Apache2
 - PHP5 (latest)
 - Configured php.ini and apache2.conf
 
 ## Requirements
-- VirtualBox (latest)
-- Vagrant (latest)
+- VirtualBox
+- Vagrant
 
 ## Usage
-1. Place `vagrant-install.sh` and `Vagrantfile` above your site's root.
+1. Place `Vagrantfile` above your site's root.
 2. `vagrant up` in your project dir.
 
 By default, this will sync `html` to your Vagrant machine. You can change the default by editing this line:
@@ -29,10 +29,7 @@ For example, after we run our Grunt build script, we end up with a `dist` dir ne
 SYNCED_FOLDER="./dist" vagrant up
 ```
 
+If you've already `vagrant up`ped, it's significantly quicker to reload, than to destroy and re-up.
 
-
----
-
-
-
-- Thanks to Bradley Flood for the [starting point](https://github.com/bradleyflood/vagrant-statamic).
+```bash
+SYNCED_FOLDER="./dist" vagrant reload
